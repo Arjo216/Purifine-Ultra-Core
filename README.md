@@ -2,7 +2,7 @@
 Hyper-local Air Quality Intelligence Grid with Physics-Based Calibration (Kappa-Köhler Correction) and Real-Time Geospatial Analytics.
 # 🌍 Purifine Ultra: The National Air Intelligence Grid
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Tech Stack](https://img.shields.io/badge/stack-Python_|_TimescaleDB_|_Docker-blue)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 ![Status](https://img.shields.io/badge/status-MISSION_CRITICAL-red)
