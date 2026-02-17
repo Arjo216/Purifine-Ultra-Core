@@ -48,7 +48,7 @@ Frontend	Streamlit + PyDeck	3D WebGL Visualization & Cyberpunk UI
 Ops	Docker Compose	Containerized microservices architecture
 📸 The Command Center
 Real-time 3D Visualization of Pollution Spikes across Indian Metros.
-![alt text](image.png)
+<img width="1860" height="864" alt="image" src="https://github.com/user-attachments/assets/59cf5eb2-e5f2-4f5d-8fd2-efb1e77286cc" />
 (dashboard screenshot here)
 
 ⚡ Quick Start (Run it locally)
