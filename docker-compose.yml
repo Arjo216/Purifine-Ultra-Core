@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # 1. The Database (TimescaleDB - Optimized for Sensor Data)
+  timescaledb:
+    image: timescale/timescaledb-ha:pg14
+    container_name: purifine_db
+    environment:
+      - POSTGRES_PASSWORD=purifine_secure_pass
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=purifine_ultra
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - purifine_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. The Database Viewer (Adminer - A GUI to see your data)
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - purifine_net
+
+networks:
+  purifine_net:
+
+volumes:
+  db_data:
