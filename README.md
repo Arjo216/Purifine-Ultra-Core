@@ -55,7 +55,7 @@ Real-time 3D Visualization of Pollution Spikes across Indian Metros.
 Prerequisites: Docker & Docker Compose installed.
 
 1. Clone the Repository
-```Bash
+Bash
 git clone [https://github.com/Arjo216/Purifine-Ultra-Core.git](https://github.com/Arjo216/Purifine-Ultra-Core.git)
 cd Purifine-Ultra-Core
 2. Ignite the Infrastructure
