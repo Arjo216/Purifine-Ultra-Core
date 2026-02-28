@@ -38,7 +38,7 @@ graph TD
     D -->|SQLAlchemy| E[FastAPI Layer]
     E -->|JSON Stream| F[Streamlit Command Center]
     F -->|3D Rendering| G((User: Govt/Public))
-🚀 Technology Stack
+##🚀 Technology Stack
 Component	Technology	Role
 Ingestion	Python 3.10 + Requests	Fetches real-time data from OpenAQ V3 & US Diplomatic Posts
 Physics	NumPy	Calculates Hygroscopic Growth Factors based on humidity
