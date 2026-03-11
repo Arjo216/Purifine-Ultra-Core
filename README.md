@@ -40,13 +40,15 @@ graph TD
     F -->|3D Rendering| G((User: Govt/Public))
 ```
 ### 🚀 Technology Stack
-Component,Technology,Role
-Ingestion,Python 3.10 + Requests,Fetches real-time data from OpenAQ V3 & US Diplomatic Posts
-Physics,NumPy,Calculates Hygroscopic Growth Factors based on humidity
-Database,TimescaleDB (PostgreSQL),Time-series storage & PostGIS Geospatial Indexing
-API,FastAPI,Serves sanitized data to mobile apps & dashboards
-Frontend,Streamlit + PyDeck,3D WebGL Visualization & Cyberpunk UI
-Ops,Docker Compose,Containerized microservices architecture
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Ingestion** | `Python 3.10` + `Requests` | Fetches real-time data from OpenAQ V3 & US Diplomatic Posts |
+| **Physics** | `NumPy` | Calculates Hygroscopic Growth Factors based on humidity |
+| **Database** | `TimescaleDB`<br>(PostgreSQL) | Time-series storage & PostGIS Geospatial Indexing |
+| **API** | `FastAPI` | Serves sanitized data to mobile apps & dashboards |
+| **Frontend** | `Streamlit` + `PyDeck` | 3D WebGL Visualization & Cyberpunk UI |
+| **Ops** | `Docker Compose` | Containerized microservices architecture |
 
 ### 📸 The Command Center
 Real-time 3D Visualization of Pollution Spikes across Indian Metros.
