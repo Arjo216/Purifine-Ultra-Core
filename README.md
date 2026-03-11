@@ -65,21 +65,21 @@ Prerequisites: Docker & Docker Compose installed.
 git clone [https://github.com/Arjo216/Purifine-Ultra-Core.git](https://github.com/Arjo216/Purifine-Ultra-Core.git)
 cd Purifine-Ultra-Core
 ```
-**2. Ignite the Infrastructure**- 
+**2. Ignite the Infrastructure**:- 
 Start the Database and Admin services in the background.
 
 ```Bash
 docker-compose up -d
 ```
-**3. Start the Ingestion Engine**- 
+**3. Start the Ingestion Engine**:- 
 This connects to the satellite uplink and begins processing data.
 
 ```Bash
 python ingest_engine.py
 ```
- You should see: ✅ Purifine Ultra Database Updated...
+  You should see: ✅ Purifine Ultra Database Updated...
 
-**4. Launch the Command Center**- 
+**4. Launch the Command Center**:- 
 Open a new terminal and run the dashboard.
 
 ```Bash
