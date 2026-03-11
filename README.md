@@ -38,59 +38,65 @@ graph TD
     D -->|SQLAlchemy| E[FastAPI Layer]
     E -->|JSON Stream| F[Streamlit Command Center]
     F -->|3D Rendering| G((User: Govt/Public))
-🚀 Technology Stack
-Component	Technology	Role
-Ingestion	Python 3.10 + Requests	Fetches real-time data from OpenAQ V3 & US Diplomatic Posts
-Physics	NumPy	Calculates Hygroscopic Growth Factors based on humidity
-Database	TimescaleDB (PostgreSQL)	Time-series storage & PostGIS Geospatial Indexing
-API	FastAPI	Serves sanitized data to mobile apps & dashboards
-Frontend	Streamlit + PyDeck	3D WebGL Visualization & Cyberpunk UI
-Ops	Docker Compose	Containerized microservices architecture
-📸 The Command Center
+```
+### 🚀 Technology Stack
+Component,Technology,Role
+Ingestion,Python 3.10 + Requests,Fetches real-time data from OpenAQ V3 & US Diplomatic Posts
+Physics,NumPy,Calculates Hygroscopic Growth Factors based on humidity
+Database,TimescaleDB (PostgreSQL),Time-series storage & PostGIS Geospatial Indexing
+API,FastAPI,Serves sanitized data to mobile apps & dashboards
+Frontend,Streamlit + PyDeck,3D WebGL Visualization & Cyberpunk UI
+Ops,Docker Compose,Containerized microservices architecture
+
+### 📸 The Command Center
 Real-time 3D Visualization of Pollution Spikes across Indian Metros.
 ![alt text]<img width="1860" height="864" alt="image" src="https://github.com/user-attachments/assets/59cf5eb2-e5f2-4f5d-8fd2-efb1e77286cc" />
 (dashboard screenshot here)
 
-⚡ Quick Start (Run it locally)
+### ⚡ Quick Start (Run it locally)
 Prerequisites: Docker & Docker Compose installed.
 
 1. Clone the Repository
-Bash
+```Bash
 git clone [https://github.com/Arjo216/Purifine-Ultra-Core.git](https://github.com/Arjo216/Purifine-Ultra-Core.git)
 cd Purifine-Ultra-Core
+```
 2. Ignite the Infrastructure
 Start the Database and Admin services in the background.
 
-Bash
+```Bash
 docker-compose up -d
+```
 3. Start the Ingestion Engine
 This connects to the satellite uplink and begins processing data.
 
-Bash
+```Bash
 python ingest_engine.py
+```
 You should see: ✅ Purifine Ultra Database Updated...
 
 4. Launch the Command Center
 Open a new terminal and run the dashboard.
 
-Bash
+```Bash
 streamlit run dashboard.py
-Access the War Room at: http://localhost:8501
+```
+Access the War Room at: *http://localhost:8501*
 
-📊 Scientific Validation
+### 📊 Scientific Validation
 Purifine Ultra includes a real-time "Physics Proof" module.
 By comparing pm25_raw (Gray Line) vs pm25_corrected (Green Line), we demonstrate the removal of humidity bias in coastal cities like Mumbai and Chennai.
 
 "Data without context is noise. Data with physics is intelligence."
 
-🔮 Future Roadmap
+### 🔮 Future Roadmap
 [ ] Mobile App: Flutter-based "Green Navigation" for pedestrians.
 
 [ ] Drone Integration: API endpoints for autonomous drone sampling.
 
 [ ] Blockchain Ledger: Immutable record of industrial emissions for carbon credit verification.
 
-🤝 Contributing
+### 🤝 Contributing
 We welcome contributions from Data Scientists, Embedded Engineers, and Policy Makers.
 
 Fork the repo.
@@ -103,7 +109,7 @@ Push to the branch (git push origin feature/AmazingFeature).
 
 Open a Pull Request.
 
-📜 License
+### 📜 License
 Distributed under the Apache-2.0 License. See LICENSE for more information.
 
-Built with 💚 for a Cleaner India.
+### Built with 💚 for a Cleaner India.
