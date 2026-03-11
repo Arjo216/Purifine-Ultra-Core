@@ -77,7 +77,7 @@ This connects to the satellite uplink and begins processing data.
 ```Bash
 python ingest_engine.py
 ```
-   You should see: ✅ Purifine Ultra Database Updated...
+  You should see: ✅ Purifine Ultra Database Updated...
 
 **4. Launch the Command Center:-** 
 Open a new terminal and run the dashboard.
