@@ -30,7 +30,7 @@ Purifine Ultra is a full-stack intelligence grid that ingests raw sensor data, p
 
 ```markdown
 ## 🛠️ System Architecture
-
+```
 ```mermaid
 flowchart LR
     %% Custom Cyberpunk/Pro Styling
