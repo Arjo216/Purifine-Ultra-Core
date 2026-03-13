@@ -28,16 +28,48 @@ Purifine Ultra is a full-stack intelligence grid that ingests raw sensor data, p
 
 ---
 
+```markdown
 ## 🛠️ System Architecture
 
 ```mermaid
-graph TD
-    A[📡 Satellite/Sensor Uplink] -->|Raw JSON| B(Ingestion Engine)
-    B -->|Filter: PM2.5 Only| C{Physics Core}
-    C -->|Apply Kappa-Correction| D[TimescaleDB]
-    D -->|SQLAlchemy| E[FastAPI Layer]
-    E -->|JSON Stream| F[Streamlit Command Center]
-    F -->|3D Rendering| G((User: Govt/Public))
+flowchart LR
+    %% Custom Cyberpunk/Pro Styling
+    classDef source fill:#1E293B,stroke:#94A3B8,stroke-width:2px,color:#F8FAFC,rx:5px,ry:5px
+    classDef engine fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#10B981,rx:5px,ry:5px
+    classDef physics fill:#022C22,stroke:#059669,stroke-width:3px,color:#34D399,stroke-dasharray: 5 5
+    classDef db fill:#1E3A8A,stroke:#3B82F6,stroke-width:2px,color:#DBEAFE
+    classDef api fill:#4C1D95,stroke:#8B5CF6,stroke-width:2px,color:#EDE9FE,rx:5px,ry:5px
+    classDef ui fill:#7F1D1D,stroke:#EF4444,stroke-width:2px,color:#FEE2E2,rx:5px,ry:5px
+
+    subgraph Acquisition [📡 DATA ACQUISITION]
+        direction TB
+        S1([🛰️ OpenAQ V3 Uplink]):::source
+        S2([🏢 US Diplomatic Posts]):::source
+    end
+
+    subgraph Pipeline [⚡ INGESTION & PROCESSING]
+        direction TB
+        IE[[⚙️ Python ETL Engine]]:::engine
+        PE{{🧠 Kappa-Köhler Physics Core}}:::physics
+    end
+
+    subgraph Storage [💾 PERSISTENCE]
+        DB[(🗄️ TimescaleDB<br/>PostGIS + PG14)]:::db
+    end
+
+    subgraph Client [🌍 PRESENTATION LAYER]
+        direction TB
+        API[[🚀 FastAPI Server]]:::api
+        UI(📍 3D Streamlit Command Center):::ui
+    end
+
+    %% Routing and Data Flow
+    S1 -- Raw JSON --> IE
+    S2 -- Raw JSON --> IE
+    IE -- "Extract: PM2.5 & Humidity" --> PE
+    PE -- "Apply: Hygroscopic Correction" --> DB
+    DB <== "SQLAlchemy" ==> API
+    API == "JSON REST Stream" ==> UI
 ```
 ---
 
