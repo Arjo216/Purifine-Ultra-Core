@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
@@ -5,6 +6,11 @@ import plotly.graph_objects as go
 from sqlalchemy import create_engine, text
 from datetime import datetime
 import time
+from dotenv import load_dotenv
+
+# --- SECURE CONFIGURATION ---
+load_dotenv()
+db_pass = os.getenv("DB_PASSWORD", "purifine_secure_pass")
 
 # --- 1. PAGE CONFIGURATION ---
 st.set_page_config(
@@ -53,7 +59,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 3. DATABASE CONNECTION (SQLAlchemy) ---
-DB_URL = "postgresql://postgres:purifine_secure_pass@localhost:5432/purifine_ultra"
+DB_URL = f"postgresql+psycopg2://postgres:{db_pass}@localhost:5432/purifine_ultra"
 
 @st.cache_resource
 def get_engine():
@@ -115,7 +121,7 @@ except Exception as e:
 c1, c2 = st.columns([3, 1])
 with c1:
     st.title("PURIFINE ULTRA // INTELLIGENCE GRID")
-    st.caption(f"⚡ SYSTEM ONLINE | 📡 SENSORS: {total_sensors} | 🆔 USER: COMMANDER | 🕒 UTC: {datetime.now().strftime('%H:%M:%S')}")
+    st.caption(f"⚡ SYSTEM ONLINE | 📡 SENSORS: {total_sensors} | 🆔 USER: OPERATOR | 🕒 UTC: {datetime.now().strftime('%H:%M:%S')}")
 with c2:
     if st.button("🔄 FORCE SYNC"):
         st.rerun()
@@ -132,12 +138,13 @@ st.markdown("---")
 # --- 6. 3D MAP SECTION ---
 st.subheader("📍 GEOSPATIAL TOXICITY LAYER (3D)")
 
+# INCREASED VISIBILITY MULTIPLIERS
 layer_scatter = pdk.Layer(
     "ScatterplotLayer",
     latest_df,
     get_position=["longitude", "latitude"],
     get_color="color",
-    get_radius=8000,
+    get_radius=30000,  # Increased from 8000 for massive national visibility
     pickable=True,
     opacity=0.4,
     stroked=True,
@@ -149,8 +156,8 @@ layer_column = pdk.Layer(
     latest_df,
     get_position=["longitude", "latitude"],
     get_elevation="pm25_corrected",
-    elevation_scale=200,
-    radius=4000,
+    elevation_scale=300,  # Increased height scale for dramatic 3D effect
+    radius=15000,         # Increased from 4000 for thick, visible columns
     get_fill_color="color",
     pickable=True,
     auto_highlight=True,
@@ -160,8 +167,8 @@ layer_column = pdk.Layer(
 view_state = pdk.ViewState(
     latitude=latest_df['latitude'].mean(),
     longitude=latest_df['longitude'].mean(),
-    zoom=4,
-    pitch=55,
+    zoom=4.5,
+    pitch=60, # Tilted slightly more for 3D emphasis
     bearing=0
 )
 
@@ -204,7 +211,7 @@ with col_chart:
             yaxis=dict(showgrid=True, gridcolor='#333'),
             legend=dict(orientation="h", y=1.1)
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 with col_table:
     st.subheader("📋 SCIENTIFIC DATA FEED")
@@ -236,11 +243,9 @@ with col_table:
         },
         height=400, # Matches chart height
         hide_index=True,
-        use_container_width=True
+        width="stretch"
     )
     
     # CSV Download
     csv = table_df.to_csv(index=False).encode('utf-8')
     st.download_button("📥 DOWNLOAD FULL REPORT (CSV)", data=csv, file_name="purifine_report.csv", mime="text/csv")
-
-time.sleep(2)
