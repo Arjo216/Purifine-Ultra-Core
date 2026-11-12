@@ -20,7 +20,7 @@ We don't just "show data." We **fix** it.
 Purifine Ultra is a full-stack intelligence grid that ingests raw sensor data, passes it through a **Kappa-Köhler Aerosol Physics Engine**, and visualizes the *true* toxicity levels in a 3D Command Center.
 
 ### 🔬 Core Innovations
-- **V7.0 Resilient Omni-Sync:** A fault-tolerant ETL pipeline that asynchronously merges pollution telemetry with GPS-targeted weather data, ensuring zero downtime even if physical sensors fail.
+- **V5.0 Resilient Omni-Sync:** A fault-tolerant ETL pipeline that asynchronously merges pollution telemetry with GPS-targeted weather data, ensuring zero downtime even if physical sensors fail.
 - **Physics-Based Calibration:** Uses the $\kappa$-Köhler theory to mathematically "dry" the air in real-time, separating hygroscopic growth (water swelling) from toxic PM2.5 particles.
 - **High-Cardinality Storage:** Built on **TimescaleDB** (PostgreSQL) to handle millions of sensor readings per second with geospatial indexing.
 - **3D Geospatial Extrusion:** Visualizes pollution density as 3D towers in a Cyberpunk-style Command Grid across 12 major Indian tech and metropolitan hubs.
